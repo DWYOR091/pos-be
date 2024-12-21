@@ -72,4 +72,11 @@ export class UserService {
   async comparePassword(plainPass: string, hashPass: string): Promise<boolean> {
     return await bcrypt.compare(plainPass, hashPass);
   }
+
+  async findUsername(username: string): Promise<User> {
+    const result = this.userRepo.findOne({ where: { username } });
+    if (!result)
+      throw new HttpException('username tidak ada', HttpStatus.NOT_FOUND);
+    return result;
+  }
 }

@@ -14,6 +14,7 @@ async function bootstrap() {
     .setTitle('Point of sale documentation')
     .setDescription('Api for pos of point')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, configSwagger);
