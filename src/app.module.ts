@@ -6,6 +6,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { ProdukModule } from './produk/produk.module';
+import { Produk } from './produk/entities/produk.entity';
+import { UniqueValidator } from './validators/unique-validator';
 
 @Module({
   imports: [
@@ -17,11 +20,12 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASS,
       database: process.env.MYSQL_DB,
-      entities: [User],
+      entities: [User, Produk],
       synchronize: true,
     }),
     UserModule,
     AuthModule,
+    ProdukModule,
   ],
   controllers: [AppController],
   providers: [AppService],

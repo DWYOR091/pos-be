@@ -1,8 +1,10 @@
 import { Exclude } from 'class-transformer';
+import { Produk } from 'src/produk/entities/produk.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -30,4 +32,7 @@ export class User {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => Produk, (produk) => produk.id)
+  produk: Produk;
 }
